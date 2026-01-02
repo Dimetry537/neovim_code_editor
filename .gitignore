@@ -1,0 +1,11 @@
+# Плагины (устанавливаются автоматически)
+lazy-lock.json
+plugin/
+
+# Состояние
+.netrwhist
+spell/
+
+# Swap/backup
+*.swp
+*.bak

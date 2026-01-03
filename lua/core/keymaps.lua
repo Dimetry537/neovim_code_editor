@@ -36,3 +36,5 @@ map("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 -- Копирование в системный буфер
 map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 
+-- Ctrl+клик для перехода к определению
+map("n", "<C-LeftMouse>", "<LeftMouse><cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })

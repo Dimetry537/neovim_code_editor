@@ -85,3 +85,14 @@ autocmd("CursorHold", {
 	end,
 	desc = "Show diagnostics on hover",
 })
+
+-- Автосохранение при переходе на другой буфер/окно
+autocmd({ "BufLeave", "FocusLost" }, {
+	group = general,
+	callback = function()
+		if vim.bo.modified and vim.bo.buftype == "" then
+			vim.cmd("silent! write")
+		end
+	end,
+	desc = "Auto save on buffer leave",
+})

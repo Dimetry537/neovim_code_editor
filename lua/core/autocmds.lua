@@ -76,3 +76,12 @@ autocmd("FileType", {
 	end,
 	desc = "Close with q",
 })
+
+-- Показывать диагностику при наведении курсора
+autocmd("CursorHold", {
+	group = general,
+	callback = function()
+		vim.diagnostic.open_float(nil, { focus = false })
+	end,
+	desc = "Show diagnostics on hover",
+})

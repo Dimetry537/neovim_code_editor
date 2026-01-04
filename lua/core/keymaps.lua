@@ -47,3 +47,22 @@ map("v", "<C-v>", '"+p', { desc = "Paste from clipboard" })
 
 -- Ctrl+A выделить всё
 map("n", "<C-a>", "ggVG", { desc = "Select all" })
+
+-- Копировать диагностику в буфер обмена
+map("n", "<leader>dc", function()
+	local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
+	if #diagnostics > 0 then
+		local messages = {}
+		for _, d in ipairs(diagnostics) do
+			table.insert(messages, d.message)
+		end
+		local text = table.concat(messages, "\n")
+		vim.fn.setreg("+", text)
+		vim.notify("Diagnostic copied!", vim.log.levels.INFO)
+	else
+		vim.notify("No diagnostics on this line", vim.log.levels.WARN)
+	end
+end, { desc = "Copy diagnostic to clipboard" })
+
+-- Открыть диагностику в редактируемом окне
+map("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Diagnostics to quickfix" })

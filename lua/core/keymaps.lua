@@ -38,3 +38,12 @@ map({ "n", "v" }, "<leader>y", '"+y', { desc = "Copy to clipboard" })
 
 -- Ctrl+клик для перехода к определению
 map("n", "<C-LeftMouse>", "<LeftMouse><cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Go to definition" })
+
+-- Копировать/вставить как в VSCode
+map("v", "<C-c>", '"+y', { desc = "Copy to clipboard" })
+map("n", "<C-v>", '"+p', { desc = "Paste from clipboard" })
+map("i", "<C-v>", "<C-r>+", { desc = "Paste from clipboard" })
+map("v", "<C-v>", '"+p', { desc = "Paste from clipboard" })
+
+-- Ctrl+A выделить всё
+map("n", "<C-a>", "ggVG", { desc = "Select all" })
